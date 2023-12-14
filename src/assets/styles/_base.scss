@@ -57,11 +57,15 @@ h1,
 h2,
 h3 {
     font-family: var(--title-ff);
-    line-height: 1.2;
+    line-height: var(--title-line-height);
 }
 
 main h2 {
     font-size: var(--title-fs);
+}
+
+main h3 {
+    font-size: var(--nav-fs);
 }
 
 img {
@@ -71,7 +75,8 @@ img {
 
 a:focus-visible,
 button:focus-visible,
-input:focus-visible {
+input:focus-visible,
+textarea:focus-visible {
     outline-color: var(--_accent-clr);
 }
 
@@ -95,9 +100,14 @@ li {
     list-style-type: none;
 }
 
+p {
+    line-height: var(--corpus-line-height);
+}
+
 :where(input[type="text"]),
 :where(input[type="email"]),
-:where(input[type="password"]) {
+:where(input[type="password"]),
+:where(textarea) {
     caret-color: hsl(var(--_txt-values) / var(--alpha));
     padding: var(--input-padding-block) var(--input-padding-inline);
     background-color: var(--primary-bg-clr);

@@ -1,23 +1,35 @@
-import { useFetchHomeRooms } from "../../assets/hooks/useFetchHomeRooms";
+
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
+import { useFetchHomeRooms } from "../../hooks/useFetchHomeRooms";
 import style from "./HomeConnected.module.scss";
 import Room from "../Room/Room";
+import Loading from "../Loading/Loading";
+import AddRoomButton from "../AddRoomButton/AddRoomButton";
 
 export default function HomeConnected() {
     const { user } = useContext(AuthContext);
 
-    const [rooms, setRooms] = useFetchHomeRooms();
+    const [[rooms, setRooms], isLoading] = useFetchHomeRooms();
 
     return (
-        <section className={`page-width page-max-width center-horizontal ${style.rooms_wrapper}`}>
-            {rooms?.map((room, index) => (
-                <Room key={room.idRoom} room={room} />
-            ))}
-            {user.admin || user.GM ?
-                <div className="add-room"></div> :
-                ""
-            }
-        </section>
+
+        isLoading ?
+            <section className={`page-width page-max-width center-horizontal ${style.rooms_wrapper}`}>
+                <Loading />
+            </section>
+            
+            :
+
+            <section className={`page-width page-max-width center-horizontal ${style.rooms_wrapper}`}>
+                {rooms?.map((room) => (
+                    <Room key={room.idRoom} room={room} homeRooms={rooms} setHomeRooms={setRooms} />
+                ))}
+
+                {user.admin || user.GM ?
+                    <AddRoomButton /> :
+                    ""
+                }
+            </section>
     );
 }
