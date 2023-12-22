@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import style from "./LeagalNotices.module.scss";
 
 export default function LeagalNotices() {
