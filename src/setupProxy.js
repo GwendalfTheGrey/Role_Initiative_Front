@@ -4,7 +4,7 @@ module.exports = (app) => {
     app.use(
         "/api/*",
         createProxyMiddleware({
-            target: "http://127.0.0.1:8000",
+            target: "https://role-initiative-back.vercel.app",
             secure: false,
         })
     );

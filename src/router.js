@@ -15,6 +15,9 @@ const SciFi = lazy(() => import("./pages/Rooms/components/SciFi"));
 const HorrorAndOther = lazy(() => import("./pages/Rooms/components/HorrorAndOther"));
 const Details = lazy(() => import("./pages/Details/Details"));
 const NewRoom = lazy(() => import("./pages/NewRoom/NewRoom"));
+const TermsOfService = lazy(() => import("./pages/TOS/TermsOfService"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy/PrivacyPolicy"));
+const LeagalNotices = lazy(() => import("./pages/LegalNotices/LeagalNotices"));
 
 export const router = createBrowserRouter([
     {
@@ -170,16 +173,16 @@ export const router = createBrowserRouter([
             },
             {
                 path: "terms-of-service",
-                // element: < />,
+                element: <TermsOfService />,
             },
             {
                 path: "privacy-policy",
-                // element: < />,
+                element: <PrivacyPolicy />,
             },
             {
-                path: "legal-notice",
-                // element: < />,
+                path: "legal-notices",
+                element: <LeagalNotices />,
             },
         ]
-        }
+    }
 ]);
