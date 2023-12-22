@@ -4,7 +4,7 @@ module.exports = (app) => {
     app.use(
         "/api/*",
         createProxyMiddleware({
-            target: "https://role-initiative-back.vercel.app",
+            target: "bvkdwalzcdu54em8zei7-mysql.services.clever-cloud.com",
             secure: false,
         })
     );
