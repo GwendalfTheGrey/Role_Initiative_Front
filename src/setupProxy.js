@@ -4,7 +4,7 @@ module.exports = (app) => {
     app.use(
         "/api/*",
         createProxyMiddleware({
-            target: "bvkdwalzcdu54em8zei7-mysql.services.clever-cloud.com",
+            target: "http://127.0.0.1:8000",
             secure: false,
         })
     );
