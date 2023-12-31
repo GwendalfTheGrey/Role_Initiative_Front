@@ -54,6 +54,7 @@ export default function ResetPassword() {
                 }, 2000);
             }
         } catch (error) {
+            setFeedback(null)
             setError("generic", { type: "generic", message: error });
         }
     };
