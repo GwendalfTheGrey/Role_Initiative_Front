@@ -1,4 +1,4 @@
-const API_ROOMS = "/api/rooms";
+const API_ROOMS = "http://127.0.0.1:8000/api/rooms";
 
 export const getUsersJoined = async () => {
     const response = await fetch(`${API_ROOMS}/getUsersJoined`);
@@ -62,13 +62,20 @@ export const createRoom = async (values) => {
             "Content-Type": "application/json",
         }
     })
+    const backResponse = await response.json()
     if (response.ok) {
-        return await response.json();
+        return backResponse
+    } else {
+        if (backResponse) {
+            throw backResponse
+        } else {
+            throw new Error("API Create Room Error")
+        }
     }
 }
 
 export const deleteRoom = async (idRoom) => {
-    const response = await fetch(`${API_ROOMS}/deleteRoom/${idRoom}`, {
+    await fetch(`${API_ROOMS}/deleteRoom/${idRoom}`, {
         method: "DELETE",
     });
 }

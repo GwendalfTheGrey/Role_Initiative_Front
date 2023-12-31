@@ -18,6 +18,8 @@ const NewRoom = lazy(() => import("./pages/NewRoom/NewRoom"));
 const TermsOfService = lazy(() => import("./pages/TOS/TermsOfService"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy/PrivacyPolicy"));
 const LeagalNotices = lazy(() => import("./pages/LegalNotices/LeagalNotices"));
+const ForgottenPassword = lazy(() => import("./pages/Security/ForgottenPassword/ForgottenPassword"));
+const ResetPassword = lazy(() => import("./pages/Security/ResetPassword/ResetPassword"));
 
 export const router = createBrowserRouter([
     {
@@ -48,7 +50,7 @@ export const router = createBrowserRouter([
                             </NoUserProtectedRoute>
                         ,
                         loader: async () => {
-                            const response = await fetch("/api/users/checkAdmin");
+                            const response = await fetch("http://127.0.0.1:8000/api/users/checkAdmin");
                             return await response.json();
                         },
                     },
@@ -170,6 +172,22 @@ export const router = createBrowserRouter([
                         ,
                     },
                 ],
+            },
+            {
+                path: "forgotten-password",
+                element:
+                    <NoUserProtectedRoute>
+                        <ForgottenPassword />
+                    </NoUserProtectedRoute>
+                ,
+            },
+            {
+                path: "reset-password",
+                element:
+                    <NoUserProtectedRoute>
+                        <ResetPassword />
+                    </NoUserProtectedRoute>
+                ,
             },
             {
                 path: "terms-of-service",

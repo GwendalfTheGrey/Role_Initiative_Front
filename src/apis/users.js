@@ -1,4 +1,4 @@
-const API_USERS = "/api/users";
+const API_USERS = "http://127.0.0.1:8000/api/users";
 
 export const createUser = async (newUser) => {
     const response = await fetch(`${API_USERS}/register`, {
@@ -10,7 +10,7 @@ export const createUser = async (newUser) => {
     });
     const backResponse = await response.json();
     if (response.ok) {
-        console.log(`${backResponse.username} created`);
+        return backResponse
     } else {
         if (backResponse) {
             throw backResponse;
@@ -23,6 +23,7 @@ export const createUser = async (newUser) => {
 export const signIn = async (values) => {
     const response = await fetch(`${API_USERS}/login`, {
         method: "POST",
+        credentials: "include",
         headers: {
             "Content-Type": "application/json",
         },
@@ -41,13 +42,16 @@ export const signIn = async (values) => {
 };
 
 export const getConnectedUser = async () => {
-    const response = await fetch(`${API_USERS}/connectedUser`);
+    const response = await fetch(`${API_USERS}/connectedUser`, {
+        credentials: "include",
+    });
     return await response.json();
 };
 
 export const signOut = async () => {
-    const response = await fetch(`${API_USERS}/logout`, {
+    await fetch(`${API_USERS}/logout`, {
         method: "DELETE",
+        credentials: "include",
     });
 };
 
@@ -70,7 +74,7 @@ export const userJoinsRoom = async (params) => {
 };
 
 export const userLeavesRoom = async (params) => {
-    const response = await fetch(`${API_USERS}/userLeavesRoom`, {
+    await fetch(`${API_USERS}/userLeavesRoom`, {
         method: "DELETE",
         body: JSON.stringify(params),
         headers: {
