@@ -1,10 +1,6 @@
 const API_ROOMS = "http://127.0.0.1:8000/api/rooms";
 
-export const getUsersJoined = async () => {
-    const response = await fetch(`${API_ROOMS}/getUsersJoined`);
-    return await response.json();
-};
-
+// FETCHING ROOMS FOR THE HOMECONNECTED, FANTASY, SCIFI AND HORRORANDOTHER COMPONENTS
 export const getRooms = async (idGenre) => {
     if (!idGenre) {
         const response = await fetch(`${API_ROOMS}/getHomeRooms`);
@@ -21,26 +17,31 @@ export const getRooms = async (idGenre) => {
     }
 };
 
+// FETCHING DATA FOR DETAILS COMPONENTS
 export const getRoomDetails = async (idRoom) => {
     const response = await fetch(`${API_ROOMS}/getRoomDetails/${idRoom}`);
     return await response.json();
 };
 
+// FETCHING ALL ROOMS FOR ADMIN IN PROFILE
 export const getAllRoomsProfile = async () => {
     const response = await fetch(`${API_ROOMS}/getAllRoomsProfile`);
     return await response.json();
 };
 
+// FETCHING ALL ROOMS CREATED BY USER IF GAMEMASTER IN PROFILE
 export const getGMRoomsProfile = async (idUser) => {
     const response = await fetch(`${API_ROOMS}/getGMRoomsProfile/${idUser}`);
     return await response.json();
 };
 
+// FETCHING ALL ROOMS JOINED BY USER IN PROFILE
 export const getPlayerRoomsProfile = async (idUser) => {
     const response = await fetch(`${API_ROOMS}/getPlayerRoomsProfile/${idUser}`);
     return await response.json();
 };
 
+// UPDATING ONGOING VALUE IN DATABASE OF ROOM CREATED BY USER
 export const changeOngoing = async (params) => {
     const response = await fetch(`${API_ROOMS}/roomDetails/changeOngoing`, {
         method: "PATCH",
@@ -54,6 +55,7 @@ export const changeOngoing = async (params) => {
     }
 };
 
+// ROOM CREATION
 export const createRoom = async (values) => {
     const response = await fetch(`${API_ROOMS}/createRoom`, {
         method: "POST",
@@ -74,6 +76,7 @@ export const createRoom = async (values) => {
     }
 }
 
+// ROOM DELETION
 export const deleteRoom = async (idRoom) => {
     await fetch(`${API_ROOMS}/deleteRoom/${idRoom}`, {
         method: "DELETE",

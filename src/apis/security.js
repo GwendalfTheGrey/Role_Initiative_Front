@@ -1,5 +1,6 @@
 const API_USERS = "http://127.0.0.1:8000/api/users";
 
+// SEND EMAIL TO USER IN DATABASE FOR FORGOTTEN PASSWORD
 export const resetPassword = async (email) => {
     const response = await fetch(`${API_USERS}/resetPassword/${email}`);
     const backResponse = await response.json();
@@ -14,6 +15,7 @@ export const resetPassword = async (email) => {
     }
 };
 
+// RESETTING PASSWORD FOR USER HAVING FORGOTTEN IT
 export const changePassword = async (password, email) => {
     const response = await fetch(`${API_USERS}/changePassword`, {
         method: "POST",

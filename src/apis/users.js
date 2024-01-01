@@ -1,5 +1,6 @@
 const API_USERS = "http://127.0.0.1:8000/api/users";
 
+// USER REGISTRATION CALLED IN REGISTER FORM
 export const createUser = async (newUser) => {
     const response = await fetch(`${API_USERS}/register`, {
         method: "POST",
@@ -20,6 +21,8 @@ export const createUser = async (newUser) => {
     }
 };
 
+// USER LOGIN CALLED IN AUTHCONTEXT THROUGH LOGIN FUNCTION
+// LOGIN FUNCTION USED IN LOGIN FORM
 export const signIn = async (values) => {
     const response = await fetch(`${API_USERS}/login`, {
         method: "POST",
@@ -41,6 +44,8 @@ export const signIn = async (values) => {
     }
 };
 
+// USER CONNECTED CHECK THROUGH COOKIE CALLED IN USERLOADER
+// USERLOADER USED AS LOADER IN ROUTER
 export const getConnectedUser = async () => {
     const response = await fetch(`${API_USERS}/connectedUser`, {
         credentials: "include",
@@ -48,6 +53,8 @@ export const getConnectedUser = async () => {
     return await response.json();
 };
 
+// USER LOGOUT CALLED IN AUTHCONTEXT THROUGH LOGOUT FUNCTION
+// LOGOUT FUNCTION USED IN HEADER
 export const signOut = async () => {
     await fetch(`${API_USERS}/logout`, {
         method: "DELETE",
@@ -55,11 +62,14 @@ export const signOut = async () => {
     });
 };
 
+// CHECK TO SEE IF USER AS JOINED SPECIFIC ROOM CALLED IN useFetchUserJoinedRoom HOOK
+// HOOK USED IN DETAILS COMPONENT
 export const getUserJoinedRoom = async (idUser, idRoom) => {
     const response = await fetch(`${API_USERS}/getUserJoinedRoom/${idUser}/${idRoom}`);
     return await response.json();
 };
 
+// USER JOINS ROOM AS PLAYER CALLED IN DETAILS COMPONENT
 export const userJoinsRoom = async (params) => {
     const response = await fetch(`${API_USERS}/userJoinsRoom`, {
         method: "POST",
@@ -73,6 +83,7 @@ export const userJoinsRoom = async (params) => {
     }
 };
 
+// USER LEAVES A JOINED ROOM AS PLAYER CALLED IN DETAILS COMPONENT
 export const userLeavesRoom = async (params) => {
     await fetch(`${API_USERS}/userLeavesRoom`, {
         method: "DELETE",
