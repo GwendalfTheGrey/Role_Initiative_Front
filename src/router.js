@@ -201,6 +201,10 @@ export const router = createBrowserRouter([
                 path: "legal-notices",
                 element: <LeagalNotices />,
             },
+            {
+                path: "*",
+                element: <Homepage />,
+            },
         ]
     }
 ]);
