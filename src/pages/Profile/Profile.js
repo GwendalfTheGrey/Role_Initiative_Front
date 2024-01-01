@@ -135,7 +135,6 @@ export default function Profile() {
                 setWillDeleteUser(false);
                 break;
             default:
-                console.log("Delete!");
                 const response = await deleteUser(idUser);
                 if (response.messageError) {
                     setDeleteUserFeedBack(response.messageError);
