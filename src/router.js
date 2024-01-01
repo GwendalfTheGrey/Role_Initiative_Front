@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
                             </NoUserProtectedRoute>
                         ,
                         loader: async () => {
-                            const response = await fetch("http://127.0.0.1:8000/api/users/checkAdmin");
+                            const response = await fetch("https://role-initiative-server.vercel.app/api/users/checkAdmin");
                             return await response.json();
                         },
                     },

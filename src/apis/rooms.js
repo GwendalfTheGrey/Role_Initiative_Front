@@ -1,4 +1,4 @@
-const API_ROOMS = "http://127.0.0.1:8000/api/rooms";
+const API_ROOMS = "https://role-initiative-server.vercel.app/api/rooms";
 
 // FETCHING ROOMS FOR THE HOMECONNECTED, FANTASY, SCIFI AND HORRORANDOTHER COMPONENTS
 export const getRooms = async (idGenre) => {

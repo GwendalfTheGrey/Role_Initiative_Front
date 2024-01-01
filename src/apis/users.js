@@ -1,4 +1,4 @@
-const API_USERS = "http://127.0.0.1:8000/api/users";
+const API_USERS = "https://role-initiative-server.vercel.app/api/users";
 
 // USER REGISTRATION CALLED IN REGISTER FORM
 export const createUser = async (newUser) => {
