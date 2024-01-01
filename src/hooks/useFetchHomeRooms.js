@@ -13,7 +13,7 @@ export const useFetchHomeRooms = (idGenre = 0) => {
             const booleanBackData = backData?.map((room) => {
                 return {
                     ...room,
-                    icon: !room.icon.data.length ? null : room.icon,
+                    icon: !room.icon ? null : room.icon,
                     description: room.description.replace(/\r\n/g, '\n'),
                 };
             });
