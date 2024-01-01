@@ -20,6 +20,7 @@ const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy/PrivacyPolicy"));
 const LeagalNotices = lazy(() => import("./pages/LegalNotices/LeagalNotices"));
 const ForgottenPassword = lazy(() => import("./pages/Security/ForgottenPassword/ForgottenPassword"));
 const ResetPassword = lazy(() => import("./pages/Security/ResetPassword/ResetPassword"));
+const Error = lazy(() => import("./pages/Error/Error"));
 
 export const router = createBrowserRouter([
     {
@@ -203,7 +204,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "*",
-                element: <Homepage />,
+                element: <Error />,
             },
         ]
     }
